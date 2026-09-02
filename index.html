@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ikram Ul Haq | AI Engineer | AI Automation & AI Agents</title>
+    <meta name="description" content="Ikram Ul Haq is an AI Engineer focused on AI automation, AI agents, LLM applications, Python, voice AI, and intelligent software systems." />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- React, ReactDOM, and Babel CDN (Loaded in correct dependency order) -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            purple: '#a78bfa',
+                            accent: '#c084fc',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(10, 10, 10, 0.5);
+        }
+        .light ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 4px;
+        }
+        .light ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f3f46;
+        }
+
+        /* Animated Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: textShimmer 6s ease infinite alternate;
+        }
+
+        @keyframes textShimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Background Grid Pattern */
+        .grid-pattern-dark {
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .grid-pattern-light {
+            background-image: 
+                radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        /* Glassmorphism Navbar */
+        .navbar-blur-dark {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background: rgba(10, 10, 15, 0.75);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .navbar-blur-light {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        /* Section Reveal Animation */
+        .section-transition {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .section-transition.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Enhanced Card Hover */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dark .card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(96, 165, 250, 0.4);
+            box-shadow: 0 16px 32px -8px rgba(59, 130, 246, 0.12), 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        .light .card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 16px 32px -8px rgba(59, 130, 246, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Float & Pulse Animations for SVG visual */
+        @keyframes floatNode {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-8px) scale(1.05); }
+        }
+        .float-animation {
+            animation: floatNode 5s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.08); }
+        }
+        .pulse-glow {
+            animation: pulseGlow 4s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        /* Status Badge Glow */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        /* Modal Overlay Transition */
+        .modal-enter {
+            animation: fadeIn 0.25s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-[#0a0a0f] text-slate-100 min-h-screen selection:bg-blue-500 selection:text-white transition-colors duration-300">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // ============================================================
+        // DATA
+        // ============================================================
+        const PROFILE = {
+            name: 'Ikram Ul Haq',
+            initials: 'IU',
+            title: 'AI Engineer | AI Automation | AI Agents | Python',
+            tagline: 'Building practical AI-powered software.',
+            about: `I'm Ikram Ul Haq, an AI Engineer focused on building practical AI-powered applications, automation systems, AI agents, and Python-based software solutions. My work combines AI technologies with backend development, APIs, automation, and user-focused software design to turn real-world problems into useful systems. I'm continuously expanding my capabilities through hands-on projects, experimentation, and real implementation.`,
+            focus: ['AI Agents', 'Automation', 'LLM Applications', 'Voice AI'],
+            social: {
+                github: 'https://github.com/ikram-ul-haq103',
+                linkedin: 'https://www.linkedin.com/in/mehar-ikram-ul-haq-b67933411',
+                email: 'mailto:ikramulhaqq90@gmail.com'
+            }
+        };
+
+        const CAPABILITIES = [
+            { icon: '🤖', title: 'AI Agents', description: 'Design intelligent systems that can understand tasks, use tools, and execute multi-step workflows autonomously.' },
+            { icon: '⚡', title: 'AI Automation', description: 'Transform repetitive business workflows into automated, high-efficiency AI-powered processes.' },
+            { icon: '🧠', title: 'LLM Applications', description: 'Integrate large language models into practical applications using APIs, structured outputs, prompting, and tool calling.' },
+            { icon: '📊', title: 'Machine Learning', description: 'Build predictive models, process datasets, engineer features, train models, and evaluate results using quantitative metrics.' },
+            { icon: '🎙️', title: 'Voice AI', description: 'Develop speech-enabled applications incorporating speech recognition, text-to-speech synthesis, and interactive voice agents.' },
+            { icon: '🐍', title: 'Python Backend', description: 'Build high-performance REST APIs and backend systems connecting AI models, databases, and external services.' }
+        ];
+
+        const SKILLS = {
+            'Programming': ['Python', 'SQL', 'JavaScript'],
+            'AI / Machine Learning': ['Machine Learning', 'Scikit-learn', 'LLM Applications'],
+            'Generative AI': ['Prompt Engineering', 'Tool Calling', 'AI Agents', 'LLM APIs'],
+            'Backend': ['FastAPI', 'REST APIs'],
+            'Development': ['Git', 'GitHub', 'VS Code', 'API Integration']
+        };
+
+        const PROJECTS = [
+            {
+                id: 'hr-recruitment',
+                title: 'AI-Powered HR Recruitment & Automated Interview System',
+                category: 'AI Automation',
+                description: 'An AI-powered recruitment platform designed to automate CV screening, candidate information extraction, candidate shortlisting, AI interviews, candidate evaluation, scoring, and recruitment communication.',
+                highlight: 'AI + Automation + Backend + Business Workflow',
+                status: 'Working Prototype',
+                technologies: ['Python', 'LLM APIs', 'PDF Processing', 'Email Automation'],
+                features: [
+                    'PDF/CV processing',
+                    'Candidate information extraction',
+                    'Skills analysis & parsing',
+                    'Experience matching algorithm',
+                    'Automated candidate screening',
+                    'Candidate ranking matrix',
+                    'AI-generated adaptive interview questions',
+                    'Timed interview sessions',
+                    'AI response scoring & feedback',
+                    'Comprehensive candidate evaluation report',
+                    'Automated email notification workflow'
+                ],
+                workflow: [
+                    'CV Upload',
+                    'CV Processing',
+                    'Information Extraction',
+                    'Requirement Matching',
+                    'Candidate Screening',
+                    'Shortlisting',
+                    'AI Interview',
+                    'Answer Evaluation',
+                    'Candidate Scoring',
+                    'Email Automation'
+                ]
+            },
+            {
+                id: 'voice-studio',
+                title: 'AI Voice Studio',
+                category: 'Voice AI',
+                description: 'An AI-powered voice platform focused on text-to-speech, speech processing, multiple voice options, translation, speech-to-text, and voice-based content workflows.',
+                highlight: 'Voice AI + AI APIs + Audio Processing + UX',
+                status: 'Working Prototype',
+                technologies: ['Python', 'Speech-to-Text', 'Text-to-Speech', 'Translation APIs'],
+                features: [
+                    'High-fidelity Text-to-Speech synthesis',
+                    'Diverse multi-voice options',
+                    'Interactive voice selection preview',
+                    'Accurate Speech-to-Text transcription',
+                    'Multilingual speech translation',
+                    'Dynamic audio stream generation',
+                    'Voice asset management library'
+                ],
+                workflow: [
+                    'Text / Audio Input',
+                    'Language & Voice Selection',
+                    'STT / TTS Engine Processing',
+                    'Audio Synthesis & Translation',
+                    'Output Generation & Export'
+                ]
+            },
+            {
+                id: 'nova',
+                title: 'NOVA — AI Voice-Controlled Desktop Assistant',
+                category: 'AI Agents',
+                description: 'NOVA is a voice-controlled desktop assistant designed to understand natural-language commands and perform useful actions on a computer.',
+                highlight: 'Voice AI + Tool Calling + Desktop Automation',
+                status: 'Working Prototype',
+                technologies: ['Python', 'Speech Recognition', 'Desktop Automation', 'Tool Calling'],
+                features: [
+                    'Voice command recognition',
+                    'Natural-language command understanding',
+                    'Application launching & control',
+                    'Web navigation & site opening',
+                    'Folder & file system navigation',
+                    'OS-level desktop automation',
+                    'Natural voice feedback responses',
+                    'Tool-based task execution',
+                    'Instant stop/interruption command handler',
+                    'Standby / listening state management',
+                    'Context-aware command handling'
+                ],
+                example: `User: "NOVA, open YouTube." → NOVA: Opens YouTube.\nUser: "Stop." → NOVA: Stops speaking and waits for the next command.`,
+                workflow: [
+                    'Voice Input Capture',
+                    'Speech Recognition',
+                    'Intent & Entity Parsing',
+                    'Tool Call Execution',
+                    'Desktop Action / Voice Feedback'
+                ]
+            }
+        ];
+
+        const WHAT_I_BUILD = [
+            { icon: '⚙️', title: 'AI Automation Systems', description: 'Turn repetitive manual processes into intelligent, automated workflows.' },
+            { icon: '🤖', title: 'Autonomous AI Agents', description: 'Build self-directed agents capable of using tools and performing complex multi-step tasks.' },
+            { icon: '🚀', title: 'LLM Applications', description: 'Integrate state-of-the-art LLM capabilities directly into core software applications.' },
+            { icon: '🎙️', title: 'Voice AI Assistants', description: 'Develop intelligent, speech-enabled applications and interactive voice desktop tools.' },
+            { icon: '🛠️', title: 'AI Backend Systems', description: 'Architect robust APIs, integrations, and backend infrastructure tailored for AI workloads.' }
+        ];
+
+        const DEV_APPROACH = [
+            { step: '01', title: 'Understand', description: 'Identify core requirements, user needs, system constraints, and key business logic.' },
+            { step: '02', title: 'Design', description: 'Architect the AI agent workflows, API endpoints, data models, and user interaction flow.' },
+            { step: '03', title: 'Build', description: 'Iteratively develop, integrate LLM tools, conduct rigorous evaluation, and refine performance.' },
+            { step: '04', title: 'Deploy', description: 'Deploy, establish operational monitoring, maintain system reliability, and scale.' }
+        ];
+
+        // ============================================================
+        // HOOKS & UTILS
+        // ============================================================
+        function useIntersectionObserver(ref, options = { threshold: 0.12 }) {
+            const [isVisible, setIsVisible] = useState(false);
+
+            useEffect(() => {
+                const observer = new IntersectionObserver(([entry]) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible(true);
+                        observer.disconnect();
+                    }
+                }, options);
+
+                if (ref.current) {
+                    observer.observe(ref.current);
+                }
+
+                return () => observer.disconnect();
+            }, [ref, options]);
+
+            return isVisible;
+        }
+
+        // --- Section Wrapper ---
+        function Section({ children, className = '', id = '' }) {
+            const ref = useRef(null);
+            const isVisible = useIntersectionObserver(ref);
+
+            return (
+                <div
+                    id={id}
+                    ref={ref}
+                    className={`section-transition ${isVisible ? 'visible' : ''} ${className}`}
+                >
+                    {children}
+                </div>
+            );
+        }
+
+        // ============================================================
+        // COMPONENTS
+        // ============================================================
+
+        // --- Navbar ---
+        function Navbar({ theme, toggleTheme }) {
+            const [isOpen, setIsOpen] = useState(false);
+            const [scrolled, setScrolled] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => {
+                    setScrolled(window.scrollY > 20);
+                };
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            useEffect(() => {
+                if (isOpen) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'unset';
+                }
+                return () => { document.body.style.overflow = 'unset'; };
+            }, [isOpen]);
+
+            const navLinks = [
+                { label: 'Home', href: '#home' },
+                { label: 'About', href: '#about' },
+                { label: 'Capabilities', href: '#capabilities' },
+                { label: 'Skills', href: '#skills' },
+                { label: 'Projects', href: '#projects' },
+                { label: 'Contact', href: '#contact' }
+            ];
+
+            return (
+                <>
+                    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? (theme === 'dark' ? 'navbar-blur-dark' : 'navbar-blur-light shadow-sm') : 'bg-transparent'}`}>
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex items-center justify-between h-16 sm:h-20">
+                                {/* Logo */}
+                                <a href="#home" className="flex items-center gap-3 group">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 flex items-center justify-center text-white font-extrabold text-sm tracking-wider shadow-lg shadow-blue-500/20 transition-transform group-hover:scale-105">
+                                        {PROFILE.initials}
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <span className="text-base font-bold tracking-tight text-slate-900 dark:text-white leading-none">
+                                            {PROFILE.name}
+                                        </span>
+                                        <span className="text-xs font-mono text-blue-600 dark:text-blue-400 mt-1">
+                                            AI Engineer
+                                        </span>
+                                    </div>
+                                </a>
+
+                                {/* Desktop Nav */}
+                                <nav className="hidden md:flex items-center gap-7">
+                                    {navLinks.map(link => (
+                                        <a
+                                            key={link.label}
+                                            href={link.href}
+                                            className="text-sm font-medium text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-white transition-colors relative group py-1"
+                                        >
+                                            {link.label}
+                                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
+                                        </a>
+                                    ))}
+
+                                    <div className="h-4 w-px bg-slate-200 dark:bg-slate-800"></div>
+
+                                    {/* Theme Switcher Button */}
+                                    <button
+                                        onClick={toggleTheme}
+                                        className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/80 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-all border border-slate-200 dark:border-slate-700/60"
+                                        aria-label="Toggle dark/light mode"
+                                        title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                                    >
+                                        {theme === 'dark' ? (
+                                            <svg className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z" clipRule="evenodd" />
+                                            </svg>
+                                        ) : (
+                                            <svg className="w-4 h-4 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                                            </svg>
+                                        )}
+                                    </button>
+
+                                    <a
+                                        href="#contact"
+                                        className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white text-sm font-semibold shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 transition-all active:scale-95"
+                                    >
+                                        Get In Touch
+                                    </a>
+                                </nav>
+
+                                {/* Mobile Actions */}
+                                <div className="flex items-center gap-3 md:hidden">
+                                    <button
+                                        onClick={toggleTheme}
+                                        className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200"
+                                        aria-label="Toggle theme"
+                                    >
+                                        {theme === 'dark' ? '☀️' : '🌙'}
+                                    </button>
+                                    <button
+                                        onClick={() => setIsOpen(!isOpen)}
+                                        className="p-2.5 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                                        aria-label="Toggle menu"
+                                    >
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'} />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    {/* Mobile Drawer */}
+                    <div 
+                        className={`fixed inset-0 z-50 md:hidden transition-opacity duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+                    >
+                        <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onClick={() => setIsOpen(false)}></div>
+                        <div className={`absolute top-0 right-0 h-full w-72 bg-white dark:bg-[#0f0f17] border-l border-slate-200 dark:border-slate-800 p-6 shadow-2xl transition-transform duration-300 ease-out flex flex-col justify-between ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                            <div>
+                                <div className="flex items-center justify-between pb-6 border-b border-slate-200 dark:border-slate-800">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+                                            {PROFILE.initials}
+                                        </div>
+                                        <span className="font-bold text-slate-900 dark:text-white">{PROFILE.name}</span>
+                                    </div>
+                                    <button onClick={() => setIsOpen(false)} className="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800">
+                                        ✕
+                                    </button>
+                                </div>
+
+                                <div className="flex flex-col gap-2 mt-6">
+                                    {navLinks.map(link => (
+                                        <a
+                                            key={link.label}
+                                            href={link.href}
+                                            onClick={() => setIsOpen(false)}
+                                            className="px-4 py-3 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-slate-800/60 hover:text-blue-600 dark:hover:text-white font-medium transition-colors"
+                                        >
+                                            {link.label}
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="pt-6 border-t border-slate-200 dark:border-slate-800">
+                                <a
+                                    href="#contact"
+                                    onClick={() => setIsOpen(false)}
+                                    className="block w-full py-3 text-center rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow-md"
+                                >
+                                    Contact Me
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            );
+        }
+
+        // --- Hero ---
+        function Hero({ theme }) {
+            return (
+                <section id="home" className="min-h-screen flex items-center pt-24 pb-16 relative overflow-hidden">
+                    {/* Background Pattern */}
+                    <div className={`absolute inset-0 ${theme === 'dark' ? 'grid-pattern-dark' : 'grid-pattern-light'} opacity-60 pointer-events-none`}></div>
+
+                    {/* Ambient Radial Glow */}
+                    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-gradient-to-tr from-blue-500/10 via-purple-500/10 to-indigo-500/10 blur-[120px] pointer-events-none"></div>
+
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                            
+                            {/* Left Content Column */}
+                            <div className="lg:col-span-7">
+                                {/* Focus Badges */}
+                                <div className="flex flex-wrap gap-2.5 mb-6">
+                                    {PROFILE.focus.map(item => (
+                                        <span 
+                                            key={item} 
+                                            className="px-3.5 py-1 text-xs font-semibold rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 shadow-sm"
+                                        >
+                                            {item}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                <h1 className="hero-title text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-slate-900 dark:text-white mb-6">
+                                    Building Intelligent<br />
+                                    <span className="gradient-text">Software & AI Agents</span>
+                                </h1>
+
+                                <p className="hero-subtitle text-lg sm:text-xl text-slate-600 dark:text-slate-300 font-medium max-w-2xl mb-4 leading-relaxed">
+                                    I'm <strong className="text-slate-900 dark:text-white font-semibold">Ikram Ul Haq</strong>, an AI Engineer focused on AI automation, intelligent agents, LLM applications, voice AI, and Python-powered software systems.
+                                </p>
+
+                                <p className="text-base text-slate-500 dark:text-slate-400 max-w-xl mb-8 leading-relaxed">
+                                    I build practical, production-ready AI solutions that transform complex real-world challenges into seamless automated software workflows.
+                                </p>
+
+                                {/* Action Buttons */}
+                                <div className="flex flex-wrap items-center gap-4 mb-10">
+                                    <a
+                                        href="#projects"
+                                        className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold text-sm shadow-xl shadow-blue-500/20 hover:shadow-blue-500/35 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                                    >
+                                        Explore My Work
+                                    </a>
+                                    <a
+                                        href="#contact"
+                                        className="px-7 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700/80 bg-white/50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-sm transition-all shadow-sm"
+                                    >
+                                        Let's Build Something
+                                    </a>
+                                </div>
+
+                                {/* Social Links */}
+                                <div className="flex items-center gap-4 pt-2 border-t border-slate-200 dark:border-slate-800/80 max-w-md">
+                                    <span className="text-xs font-mono text-slate-400 uppercase tracking-wider">Connect:</span>
+                                    <a
+                                        href={PROFILE.social.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white border border-slate-200 dark:border-slate-700/60 transition-all hover:scale-105"
+                                        aria-label="GitHub Profile"
+                                    >
+                                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                                        </svg>
+                                    </a>
+                                    <a
+                                        href={PROFILE.social.linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white border border-slate-200 dark:border-slate-700/60 transition-all hover:scale-105"
+                                        aria-label="LinkedIn Profile"
+                                    >
+                                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                        </svg>
+                                    </a>
+                                    <a
+                                        href={PROFILE.social.email}
+                                        className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white border border-slate-200 dark:border-slate-700/60 transition-all hover:scale-105"
+                                        aria-label="Send Email"
+                                    >
+                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            {/* Right Visual Column (Interactive AI Architecture Diagram) */}
+                            <div className="lg:col-span-5 flex items-center justify-center">
+                                <div className="relative w-full max-w-md aspect-square p-4 rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl shadow-2xl">
+                                    <svg viewBox="0 0 400 400" className="w-full h-full">
+                                        {/* Radial Rings */}
+                                        <circle cx="200" cy="200" r="140" fill="none" stroke={theme === 'dark' ? 'rgba(96,165,250,0.08)' : 'rgba(59,130,246,0.1)'} strokeWidth="1.5" strokeDasharray="6 6" />
+                                        <circle cx="200" cy="200" r="85" fill="none" stroke={theme === 'dark' ? 'rgba(167,139,250,0.15)' : 'rgba(147,51,234,0.15)'} strokeWidth="1.5" />
+                                        
+                                        {/* Pulse Effect */}
+                                        <circle cx="200" cy="200" r="120" className="pulse-glow" fill={theme === 'dark' ? 'rgba(96,165,250,0.04)' : 'rgba(59,130,246,0.05)'} />
+
+                                        {/* Connection Lines */}
+                                        {[
+                                            [200, 200, 200, 70],
+                                            [200, 200, 315, 135],
+                                            [200, 200, 315, 265],
+                                            [200, 200, 200, 330],
+                                            [200, 200, 85, 265],
+                                            [200, 200, 85, 135]
+                                        ].map(([x1, y1, x2, y2], i) => (
+                                            <line
+                                                key={i}
+                                                x1={x1}
+                                                y1={y1}
+                                                x2={x2}
+                                                y2={y2}
+                                                stroke={theme === 'dark' ? 'rgba(148, 163, 184, 0.2)' : 'rgba(100, 116, 139, 0.2)'}
+                                                strokeWidth="2"
+                                            />
+                                        ))}
+
+                                        {/* Perimeter Nodes */}
+                                        {[
+                                            { x: 200, y: 70, label: 'LLMs', color: '#60a5fa' },
+                                            { x: 315, y: 135, label: 'Voice AI', color: '#a78bfa' },
+                                            { x: 315, y: 265, label: 'Tools', color: '#c084fc' },
+                                            { x: 200, y: 330, label: 'Automation', color: '#38bdf8' },
+                                            { x: 85, y: 265, label: 'APIs', color: '#818cf8' },
+                                            { x: 85, y: 135, label: 'Python', color: '#34d399' }
+                                        ].map((node, i) => (
+                                            <g key={i} className="float-animation" style={{ animationDelay: `${i * 0.4}s` }}>
+                                                <circle cx={node.x} cy={node.y} r="22" fill={theme === 'dark' ? '#1e293b' : '#ffffff'} stroke={node.color} strokeWidth="2.5" className="shadow-md" />
+                                                <circle cx={node.x} cy={node.y} r="6" fill={node.color} />
+                                                <text x={node.x} y={node.y + 36} textAnchor="middle" fill={theme === 'dark' ? '#94a3b8' : '#64748b'} fontSize="11" fontWeight="600" className="font-mono">
+                                                    {node.label}
+                                                </text>
+                                            </g>
+                                        ))}
+
+                                        {/* Core AI Center */}
+                                        <g>
+                                            <circle cx="200" cy="200" r="38" fill="url(#coreGradient)" className="shadow-xl" />
+                                            <text x="200" y="206" textAnchor="middle" fill="#ffffff" fontSize="16" fontWeight="800" className="font-sans">
+                                                AI
+                                            </text>
+                                        </g>
+
+                                        {/* Gradients */}
+                                        <defs>
+                                            <linearGradient id="coreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stopColor="#3b82f6" />
+                                                <stop offset="50%" stopColor="#8b5cf6" />
+                                                <stop offset="100%" stopColor="#d946ef" />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        // --- About ---
+        function About() {
+            return (
+                <Section id="about">
+                    <section className="py-20 border-t border-slate-200 dark:border-slate-800/80">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="text-xs font-mono font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Background</span>
+                            </div>
+                            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">About Me</h2>
+                            <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-8"></div>
+                            
+                            <div className="max-w-4xl p-8 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 shadow-xl backdrop-blur-sm">
+                                <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                                    {PROFILE.about}
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </Section>
+            );
+        }
+
+        // --- Engineering Capabilities ---
+        function Capabilities() {
+            return (
+                <Section id="capabilities">
+                    <section className="py-20 border-t border-slate-200 dark:border-slate-800/80">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="text-xs font-mono font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Core Competencies</span>
+                            </div>
+                            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">Engineering Capabilities</h2>
+                            <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-12"></div>
+                            
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {CAPABILITIES.map((cap, i) => (
+                                    <div key={i} className="card-hover p-7 rounded-2xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 shadow-sm flex flex-col justify-between">
+                                        <div>
+                                            <div className="text-3xl mb-4 p-3 w-fit rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                                                {cap.icon}
+                                            </div>
+                                            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{cap.title}</h3>
+                                            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{cap.description}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                </Section>
+            );
+        }
+
+        // --- Skills ---
+        function Skills() {
+            return (
+                <Section id="skills">
+                    <section className="py-20 border-t border-slate-200 dark:border-slate-800/80">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="text-xs font-mono font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Tools & Technologies</span>
+                            </div>
+                            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">Skills & Tech Stack</h2>
+                            <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-12"></div>
+                            
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {Object.entries(SKILLS).map(([category, items]) => (
+                                    <div key={category} className="p-6 rounded-2xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 shadow-sm">
+                                        <h3 className="text-xs font-mono text-blue-600 dark:text-blue-400 font-bold mb-4 uppercase tracking-wider">{category}</h3>
+                                        <div className="flex flex-wrap gap-2.5">
+                                            {items.map(skill => (
+                                                <span key={skill} className="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/50 text-sm font-medium text-slate-800 dark:text-slate-200 shadow-xs hover:border-blue-500/40 transition-colors">
+                                                    {skill}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                </Section>
+            );
+        }
+
+        // --- Projects ---
+        function Projects() {
+            const [selectedProject, setSelectedProject] = useState(null);
+
+            return (
+                <Section id="projects">
+                    <section className="py-20 border-t border-slate-200 dark:border-slate-800/80">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="text-xs font-mono font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Portfolio Showcase</span>
+                            </div>
+                            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">Featured Projects</h2>
+                            <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-4"></div>
+                            <p className="text-slate-600 dark:text-slate-400 mb-12 max-w-2xl text-base">
+                                Each project represents a practical application of AI agents, automated workflows, and robust Python backend systems.
+                            </p>
+
+                            <div className="grid lg:grid-cols-3 gap-8">
+                                {PROJECTS.map((project) => (
+                                    <div key={project.id} className="card-hover p-7 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 shadow-md flex flex-col justify-between">
+                                        <div>
+                                            <div className="flex justify-between items-center mb-3">
+                                                <span className="text-xs font-mono font-semibold text-blue-600 dark:text-blue-400">{project.category}</span>
+                                                <span className="status-badge bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                                    {project.status}
+                                                </span>
+                                            </div>
+                                            
+                                            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{project.title}</h3>
+                                            <p className="text-sm text-slate-600 dark:text-slate-400 mb-6 leading-relaxed line-clamp-4">{project.description}</p>
+                                        </div>
+
+                                        <div>
+                                            <div className="flex flex-wrap gap-2 mb-6">
+                                                {project.technologies.map(tech => (
+                                                    <span key={tech} className="px-2.5 py-1 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
+
+                                            <button
+                                                onClick={() => setSelectedProject(project)}
+                                                className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white text-sm font-semibold shadow-md shadow-blue-500/20 hover:shadow-blue-500/30 transition-all flex items-center justify-center gap-2"
+                                            >
+                                                <span>View Case Study</span>
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Project Modal */}
+                    {selectedProject && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md modal-enter" onClick={() => setSelectedProject(null)}>
+                            <div className="bg-white dark:bg-[#0f0f18] border border-slate-200 dark:border-slate-800 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 shadow-2xl" onClick={e => e.stopPropagation()}>
+                                
+                                <div className="flex justify-between items-start mb-6 pb-4 border-b border-slate-200 dark:border-slate-800">
+                                    <div>
+                                        <span className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">{selectedProject.category}</span>
+                                        <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">{selectedProject.title}</h3>
+                                    </div>
+                                    <button 
+                                        onClick={() => setSelectedProject(null)} 
+                                        className="p-2.5 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                                    >
+                                        ✕
+                                    </button>
+                                </div>
+
+                                <div className="space-y-8">
+                                    <div>
+                                        <h4 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider mb-2">Overview</h4>
+                                        <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-base">{selectedProject.description}</p>
+                                    </div>
+
+                                    <div>
+                                        <h4 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider mb-2">Technical Highlight</h4>
+                                        <span className="inline-block px-3.5 py-1.5 rounded-xl bg-blue-500/10 text-blue-700 dark:text-blue-300 text-sm font-semibold border border-blue-500/20">
+                                            {selectedProject.highlight}
+                                        </span>
+                                    </div>
+
+                                    {selectedProject.workflow && (
+                                        <div>
+                                            <h4 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider mb-4">Execution Workflow</h4>
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                                {selectedProject.workflow.map((step, i) => (
+                                                    <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800/80 text-sm">
+                                                        <span className="w-7 h-7 rounded-lg bg-blue-600 text-white flex items-center justify-center text-xs font-mono font-bold shadow-sm">{i + 1}</span>
+                                                        <span className="font-medium text-slate-800 dark:text-slate-200">{step}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {selectedProject.example && (
+                                        <div>
+                                            <h4 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider mb-2">Example Interaction</h4>
+                                            <div className="p-4 rounded-xl bg-slate-900 text-slate-200 font-mono text-sm border border-slate-800 leading-relaxed whitespace-pre-line">
+                                                {selectedProject.example}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    <div>
+                                        <h4 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider mb-3">Key Features</h4>
+                                        <ul className="grid sm:grid-cols-2 gap-2.5">
+                                            {selectedProject.features.map((feature, i) => (
+                                                <li key={i} className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
+                                                    <span className="text-blue-500 font-bold mt-0.5">✓</span>
+                                                    <span>{feature}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    <div>
+                                        <h4 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider mb-3">Technologies Used</h4>
+                                        <div className="flex flex-wrap gap-2">
+                                            {selectedProject.technologies.map(tech => (
+                                                <span key={tech} className="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 text-xs font-semibold text-slate-800 dark:text-slate-200">
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </Section>
+            );
+        }
+
+        // --- What I Build ---
+        function WhatIBuild() {
+            return (
+                <Section id="what-i-build">
+                    <section className="py-20 border-t border-slate-200 dark:border-slate-800/80">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="text-xs font-mono font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Specialization</span>
+                            </div>
+                            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">What I Build</h2>
+                            <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-12"></div>
+                            
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {WHAT_I_BUILD.map((item, i) => (
+                                    <div key={i} className="card-hover p-7 rounded-2xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 shadow-sm">
+                                        <div className="text-3xl mb-4">{item.icon}</div>
+                                        <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{item.title}</h3>
+                                        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{item.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                </Section>
+            );
+        }
+
+        // --- Development Approach ---
+        function DevApproach() {
+            return (
+                <Section>
+                    <section className="py-20 border-t border-slate-200 dark:border-slate-800/80">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="text-xs font-mono font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Engineering Methodology</span>
+                            </div>
+                            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">Development Approach</h2>
+                            <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-12"></div>
+                            
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                {DEV_APPROACH.map((step) => (
+                                    <div key={step.step} className="card-hover p-7 rounded-2xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 shadow-sm text-center relative overflow-hidden">
+                                        <div className="text-4xl font-extrabold font-mono text-blue-600 dark:text-blue-400 mb-3 opacity-90">{step.step}</div>
+                                        <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{step.title}</h3>
+                                        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{step.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                </Section>
+            );
+        }
+
+        // --- Contact ---
+        function Contact() {
+            const [formData, setFormData] = useState({
+                name: '',
+                email: '',
+                projectType: 'AI Application',
+                message: ''
+            });
+            const [submitted, setSubmitted] = useState(false);
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                setSubmitted(true);
+                setTimeout(() => setSubmitted(false), 5000);
+                setFormData({ name: '', email: '', projectType: 'AI Application', message: '' });
+            };
+
+            const handleChange = (e) => {
+                setFormData({ ...formData, [e.target.name]: e.target.value });
+            };
+
+            return (
+                <Section id="contact">
+                    <section className="py-20 border-t border-slate-200 dark:border-slate-800/80">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="text-xs font-mono font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Get In Touch</span>
+                            </div>
+                            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">Have an idea? Let's build it.</h2>
+                            <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-4"></div>
+                            <p className="text-slate-600 dark:text-slate-400 max-w-2xl mb-10 text-base">
+                                Whether you're exploring an AI solution, automation workflow, intelligent agent application, or custom software project, feel free to send a message.
+                            </p>
+
+                            <div className="max-w-2xl p-8 sm:p-10 rounded-3xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 shadow-xl">
+                                <form onSubmit={handleSubmit} className="space-y-6">
+                                    <div>
+                                        <label htmlFor="name" className="block text-xs font-mono font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Name</label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            name="name"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            required
+                                            className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors text-sm"
+                                            placeholder="Your name"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="email" className="block text-xs font-mono font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Email</label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            required
+                                            className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors text-sm"
+                                            placeholder="your@email.com"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="projectType" className="block text-xs font-mono font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Project Category</label>
+                                        <select
+                                            id="projectType"
+                                            name="projectType"
+                                            value={formData.projectType}
+                                            onChange={handleChange}
+                                            className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors text-sm"
+                                        >
+                                            <option value="AI Application">AI Application</option>
+                                            <option value="AI Automation">AI Automation</option>
+                                            <option value="AI Agent">AI Agent</option>
+                                            <option value="Voice AI">Voice AI</option>
+                                            <option value="Machine Learning">Machine Learning</option>
+                                            <option value="Backend/API">Backend/API</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="message" className="block text-xs font-mono font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Message</label>
+                                        <textarea
+                                            id="message"
+                                            name="message"
+                                            value={formData.message}
+                                            onChange={handleChange}
+                                            required
+                                            rows={5}
+                                            className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors text-sm resize-none"
+                                            placeholder="Describe your project goals or requirements..."
+                                        />
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        className="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold text-sm shadow-xl shadow-blue-500/25 transition-all hover:scale-[1.01] active:scale-100"
+                                    >
+                                        Send Message
+                                    </button>
+
+                                    {submitted && (
+                                        <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-semibold text-center flex items-center justify-center gap-2">
+                                            <span>✓</span> Message sent successfully! I will respond shortly.
+                                        </div>
+                                    )}
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </Section>
+            );
+        }
+
+        // --- Footer ---
+        function Footer() {
+            return (
+                <footer className="border-t border-slate-200 dark:border-slate-800/80 py-10 bg-slate-50/50 dark:bg-slate-950/50">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+                            <div className="text-center sm:text-left">
+                                <div className="text-base font-extrabold text-slate-900 dark:text-white">{PROFILE.name}</div>
+                                <div className="text-xs font-mono text-slate-500 dark:text-slate-400 mt-1">{PROFILE.title}</div>
+                            </div>
+                            <div className="flex items-center gap-6 text-sm font-medium">
+                                <a href={PROFILE.social.github} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white transition-colors">
+                                    GitHub
+                                </a>
+                                <a href={PROFILE.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white transition-colors">
+                                    LinkedIn
+                                </a>
+                                <a href={PROFILE.social.email} className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white transition-colors">
+                                    Email
+                                </a>
+                            </div>
+                        </div>
+                        <div className="text-center text-xs text-slate-400 dark:text-slate-500 mt-8 pt-6 border-t border-slate-200 dark:border-slate-800/60 font-mono">
+                            © {new Date().getFullYear()} {PROFILE.name}. All rights reserved.
+                        </div>
+                    </div>
+                </footer>
+            );
+        }
+
+        // ============================================================
+        // MAIN APP COMPONENT
+        // ============================================================
+        function App() {
+            const [theme, setTheme] = useState('dark');
+
+            useEffect(() => {
+                const savedTheme = localStorage.getItem('theme') || 'dark';
+                setTheme(savedTheme);
+                if (savedTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                    document.body.style.backgroundColor = '#0a0a0f';
+                } else {
+                    document.documentElement.classList.add('light');
+                    document.documentElement.classList.remove('dark');
+                    document.body.style.backgroundColor = '#f8fafc';
+                }
+            }, []);
+
+            const toggleTheme = () => {
+                const newTheme = theme === 'dark' ? 'light' : 'dark';
+                setTheme(newTheme);
+                localStorage.setItem('theme', newTheme);
+                if (newTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                    document.body.style.backgroundColor = '#0a0a0f';
+                } else {
+                    document.documentElement.classList.add('light');
+                    document.documentElement.classList.remove('dark');
+                    document.body.style.backgroundColor = '#f8fafc';
+                }
+            };
+
+            return (
+                <div className="min-h-screen font-sans selection:bg-blue-500 selection:text-white">
+                    <Navbar theme={theme} toggleTheme={toggleTheme} />
+                    <main>
+                        <Hero theme={theme} />
+                        <About />
+                        <Capabilities />
+                        <Skills />
+                        <Projects />
+                        <WhatIBuild />
+                        <DevApproach />
+                        <Contact />
+                    </main>
+                    <Footer />
+                </div>
+            );
+        }
+
+        // ============================================================
+        // MOUNT REACT APP
+        // ============================================================
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
