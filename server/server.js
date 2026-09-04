@@ -180,11 +180,17 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
   });
 
   const mailOptions = {
-    from   : `"Portfolio — Ikram Ul Haq" <${process.env.EMAIL_USERNAME}>`,
+    from   : `"Ikram Ul Haq Portfolio" <${process.env.EMAIL_USERNAME}>`,
     to     : process.env.CONTACT_RECEIVER_EMAIL || process.env.EMAIL_USERNAME,
     replyTo: `"${name.trim()}" <${email.trim()}>`,
-    subject: `📬 New Portfolio Message from ${name.trim()}`,
+    subject: `New Contact Form Submission from ${name.trim()}`,
+    text   : `New Portfolio Contact Form Submission\n\nName: ${name.trim()}\nEmail: ${email.trim()}\nDate: ${submittedAt}\n\nMessage:\n${message.trim()}\n`,
     html   : buildEmailHtml({ name, email, message, submittedAt }),
+    headers: {
+      'X-Priority': '1 (Highest)',
+      'X-MSMail-Priority': 'High',
+      'Importance': 'High',
+    },
   };
 
   try {
