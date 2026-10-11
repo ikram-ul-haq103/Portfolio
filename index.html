@@ -20,6 +20,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Devicon Icons -->
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -268,7 +271,7 @@ const PROFILE = {
     name: 'Ikram Ul Haq',
     initials: 'IU',
     title: 'AI Engineer | AI Automation | AI Agents | Python',
-    about: `I'm Ikram Ul Haq, an AI Engineer focused on building practical AI-powered applications, automation systems, AI agents, and Python-based software solutions. My work combines AI technologies with backend development, APIs, automation, and user-focused software design to turn real-world problems into useful systems. I'm continuously expanding my capabilities through hands-on projects, experimentation, and real implementation.`,
+    about: `I'm Ikram Ul Haq, an AI Engineer focused on building intelligent applications, AI agents, and automation systems. I work with Python, LLMs, RAG, LangChain, and backend APIs to turn ideas into practical AI-powered solutions. My approach combines problem-solving, hands-on development, and continuous experimentation to build software that is useful, reliable, and designed for real-world needs.`,
     focus: ['AI Agents', 'Automation', 'LLM Applications', 'Voice AI'],
     stats: [
         { label: 'AI Projects',     num: 3,   suffix: '+' },
@@ -292,22 +295,97 @@ const TYPEWRITER_ROLES = [
     'Python Developer',
 ];
 
-const CAPABILITIES = [
-    { icon: '🤖', title: 'AI Agents',        description: 'Design intelligent systems that understand tasks, use tools, and execute multi-step workflows autonomously.' },
-    { icon: '⚡', title: 'AI Automation',     description: 'Transform repetitive business workflows into automated, high-efficiency AI-powered processes.' },
-    { icon: '🧠', title: 'LLM Applications', description: 'Integrate large language models into practical apps using APIs, structured outputs, prompting, and tool calling.' },
-    { icon: '📊', title: 'Machine Learning', description: 'Build predictive models, engineer features, train and evaluate models using quantitative metrics.' },
-    { icon: '🎙️', title: 'Voice AI',          description: 'Develop speech-enabled applications with speech recognition, TTS synthesis, and interactive voice agents.' },
-    { icon: '🐍', title: 'Python Backend',    description: 'Build high-performance REST APIs and backend systems connecting AI models, databases, and external services.' },
-];
 
-const SKILLS = {
-    'Programming'          : ['Python', 'SQL', 'JavaScript'],
-    'AI / Machine Learning': ['Machine Learning', 'Scikit-learn', 'LLM Applications'],
-    'Generative AI'        : ['Prompt Engineering', 'Tool Calling', 'AI Agents', 'LLM APIs'],
-    'Backend'              : ['FastAPI', 'REST APIs'],
-    'Development'          : ['Git', 'GitHub', 'VS Code', 'API Integration'],
-};
+const SKILL_CATEGORIES = [
+    {
+        title: 'LANGUAGES',
+        iconSvg: (
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+        ),
+        skills: [
+            { name: 'Python', devicon: 'devicon-python-plain colored' },
+            { name: 'SQL', devicon: 'devicon-azuresqldatabase-plain colored', badge: 'SQL', badgeColor: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30' },
+            { name: 'JavaScript', devicon: 'devicon-javascript-plain colored' },
+        ]
+    },
+    {
+        title: 'BACKEND & APIS',
+        iconSvg: (
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+            </svg>
+        ),
+        skills: [
+            { name: 'FastAPI', devicon: 'devicon-fastapi-plain colored' },
+            { name: 'REST APIs', badge: 'REST', badgeColor: 'bg-sky-500/15 text-sky-400 border-sky-500/30' },
+            { name: 'WebSockets', badge: 'WS', badgeColor: 'bg-purple-500/15 text-purple-400 border-purple-500/30' },
+            { name: 'JSON / HTTP', badge: 'API', badgeColor: 'bg-indigo-500/15 text-indigo-400 border-indigo-500/30' },
+            { name: 'JWT Auth', badge: 'JWT', badgeColor: 'bg-amber-500/15 text-amber-400 border-amber-500/30' },
+        ]
+    },
+    {
+        title: 'AI AGENTS & LLMS',
+        iconSvg: (
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+        ),
+        skills: [
+            { name: 'LLM APIs', badge: 'LLM', badgeColor: 'bg-blue-500/15 text-blue-400 border-blue-500/30' },
+            { name: 'AI Agents', badge: 'AGENT', badgeColor: 'bg-violet-500/15 text-violet-400 border-violet-500/30' },
+            { name: 'RAG', badge: 'RAG', badgeColor: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30' },
+            { name: 'LangChain', badge: 'CHAIN', badgeColor: 'bg-amber-500/15 text-amber-400 border-amber-500/30' },
+            { name: 'Tool Calling', badge: 'TOOLS', badgeColor: 'bg-cyan-500/15 text-cyan-400 border-cyan-500/30' },
+            { name: 'Prompt Eng.', badge: 'PROMPT', badgeColor: 'bg-pink-500/15 text-pink-400 border-pink-500/30' },
+        ]
+    },
+    {
+        title: 'VOICE AI & SPEECH',
+        iconSvg: (
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+            </svg>
+        ),
+        skills: [
+            { name: 'Speech-to-Text', badge: 'STT', badgeColor: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30' },
+            { name: 'Text-to-Speech', badge: 'TTS', badgeColor: 'bg-purple-500/15 text-purple-400 border-purple-500/30' },
+            { name: 'Voice Assistants', badge: 'VOICE', badgeColor: 'bg-blue-500/15 text-blue-400 border-blue-500/30' },
+            { name: 'Audio Process', badge: 'AUDIO', badgeColor: 'bg-amber-500/15 text-amber-400 border-amber-500/30' },
+        ]
+    },
+    {
+        title: 'DATA & MACHINE LEARNING',
+        iconSvg: (
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+        ),
+        skills: [
+            { name: 'Machine Learning', devicon: 'devicon-scikitlearn-plain colored' },
+            { name: 'Pandas', devicon: 'devicon-pandas-plain colored' },
+            { name: 'NumPy', devicon: 'devicon-numpy-plain colored' },
+            { name: 'Data Pipeline', badge: 'DATA', badgeColor: 'bg-indigo-500/15 text-indigo-400 border-indigo-500/30' },
+        ]
+    },
+    {
+        title: 'TOOLS & WORKFLOW',
+        iconSvg: (
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+        ),
+        skills: [
+            { name: 'Git', devicon: 'devicon-git-plain colored' },
+            { name: 'GitHub', devicon: 'devicon-github-original' },
+            { name: 'VS Code', devicon: 'devicon-vscode-plain colored' },
+            { name: 'Postman', devicon: 'devicon-postman-plain colored' },
+            { name: 'Linux / Bash', devicon: 'devicon-bash-plain' },
+        ]
+    },
+];
 
 const PROJECTS = [
     {
@@ -376,13 +454,6 @@ const PROJECTS = [
     },
 ];
 
-const WHAT_I_BUILD = [
-    { icon: '⚙️', title: 'AI Automation Systems',   description: 'Turn repetitive manual processes into intelligent, automated workflows.' },
-    { icon: '🤖', title: 'Autonomous AI Agents',     description: 'Build self-directed agents capable of using tools and performing complex multi-step tasks.' },
-    { icon: '🚀', title: 'LLM Applications',         description: 'Integrate state-of-the-art LLM capabilities directly into core software.' },
-    { icon: '🎙️', title: 'Voice AI Assistants',      description: 'Develop intelligent, speech-enabled applications and desktop voice tools.' },
-    { icon: '🛠️', title: 'AI-Powered Backend',        description: 'Architect robust APIs and backend infrastructure tailored for AI workloads.' },
-];
 
 const DEV_APPROACH = [
     { step: '01', title: 'Understand', description: 'Identify core requirements, user needs, constraints, and key business logic.' },
@@ -527,7 +598,7 @@ function Navbar({ theme, toggleTheme }) {
     useEffect(() => {
         const onScroll = () => {
             setScrolled(window.scrollY > 24);
-            const sections = ['home','about','capabilities','skills','projects','what-i-build','approach','contact'];
+            const sections = ['home','about','skills','projects','approach','contact'];
             for (let i = sections.length - 1; i >= 0; i--) {
                 const el = document.getElementById(sections[i]);
                 if (el && window.scrollY >= el.offsetTop - 130) {
@@ -546,12 +617,11 @@ function Navbar({ theme, toggleTheme }) {
     }, [open]);
 
     const links = [
-        { href: '#home',         label: 'Home',         id: 'home' },
-        { href: '#about',        label: 'About',        id: 'about' },
-        { href: '#capabilities', label: 'Capabilities', id: 'capabilities' },
-        { href: '#skills',       label: 'Skills',       id: 'skills' },
-        { href: '#projects',     label: 'Projects',     id: 'projects' },
-        { href: '#contact',      label: 'Contact',      id: 'contact' },
+        { href: '#home',     label: 'Home',     id: 'home' },
+        { href: '#about',    label: 'About',    id: 'about' },
+        { href: '#skills',   label: 'Skills',   id: 'skills' },
+        { href: '#projects', label: 'Projects', id: 'projects' },
+        { href: '#contact',  label: 'Contact',  id: 'contact' },
     ];
 
     const isDark = theme === 'dark';
@@ -856,52 +926,68 @@ function About() {
     );
 }
 
-/* ══════════════════════════════════════════════════════════════════════
-   CAPABILITIES SECTION (Individual Staggered Cards)
-══════════════════════════════════════════════════════════════════════ */
-function Capabilities() {
-    return (
-        <section id="capabilities" className="py-20 section-divider">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <Reveal><SectionHeading label="Core Competencies" title="Engineering Capabilities" /></Reveal>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {CAPABILITIES.map((cap, i) => (
-                        <Reveal key={i} delay={i * 70} scale={true}>
-                            <div className="cap-card group h-full rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/50 p-7 shadow-sm hover:border-blue-500/40 hover:shadow-blue-500/10 hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5">
-                                <div className="cap-icon text-3xl mb-4 w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
-                                    {cap.icon}
-                                </div>
-                                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{cap.title}</h3>
-                                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{cap.description}</p>
-                            </div>
-                        </Reveal>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-}
 
 /* ══════════════════════════════════════════════════════════════════════
-   SKILLS & TECH STACK SECTION
+   SKILLS & TECH STACK SECTION (Grouped by Discipline like Screenshot)
 ══════════════════════════════════════════════════════════════════════ */
 function Skills() {
     return (
         <section id="skills" className="py-20 section-divider">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <Reveal><SectionHeading label="Tools & Technologies" title="Skills & Tech Stack" /></Reveal>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {Object.entries(SKILLS).map(([cat, items], ci) => (
-                        <Reveal key={cat} delay={ci * 80}>
-                            <div className="rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/50 p-6 shadow-sm h-full hover:border-blue-500/30 transition-colors duration-300">
-                                <h3 className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-4">{cat}</h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {items.map((s, si) => (
-                                        <span key={s} className="skill-pill px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/50 text-sm font-medium text-slate-800 dark:text-slate-200">
-                                            {s}
-                                        </span>
+                <Reveal>
+                    <div className="text-center max-w-3xl mx-auto mb-14">
+                        <SectionLabel>Tools & Technologies</SectionLabel>
+                        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-3">
+                            Skills & Tech Stack
+                        </h2>
+                        <div className="w-16 h-1 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 mx-auto mb-4"></div>
+                        <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base font-normal">
+                            Technologies and tools I work with, grouped by discipline.
+                        </p>
+                    </div>
+                </Reveal>
+
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    {SKILL_CATEGORIES.map((cat, ci) => (
+                        <Reveal key={cat.title} delay={ci * 80}>
+                            <div className="rounded-3xl border border-slate-200/90 dark:border-slate-800/80 bg-white dark:bg-slate-900/50 p-6 sm:p-7 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 dark:hover:shadow-blue-500/10 hover:border-blue-400/40 dark:hover:border-blue-500/30 transition-all duration-300 hover:-translate-y-1 h-full flex flex-col justify-start">
+                                
+                                {/* Discipline Header Badge (matches screenshot) */}
+                                <div className="flex items-center gap-3 mb-6">
+                                    <div className="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center shadow-md shadow-blue-500/25 flex-shrink-0">
+                                        {cat.iconSvg}
+                                    </div>
+                                    <h3 className="text-xs sm:text-sm font-bold tracking-wider text-blue-600 dark:text-blue-400 uppercase font-mono">
+                                        {cat.title}
+                                    </h3>
+                                </div>
+
+                                {/* Skills Grid with Visual Logos & Badges */}
+                                <div className="grid grid-cols-3 gap-y-5 gap-x-3 pt-2">
+                                    {cat.skills.map((skill, si) => (
+                                        <div 
+                                            key={skill.name} 
+                                            className="group flex flex-col items-center text-center p-2 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200 cursor-default"
+                                        >
+                                            {/* Icon / Brand badge */}
+                                            <div className="w-12 h-12 flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-110">
+                                                {skill.devicon ? (
+                                                    <i className={`${skill.devicon} text-3xl sm:text-4xl leading-none`}></i>
+                                                ) : (
+                                                    <span className={`text-[11px] font-mono font-bold px-2 py-1.5 rounded-lg border leading-tight ${skill.badgeColor || 'bg-blue-500/15 text-blue-400 border-blue-500/30'}`}>
+                                                        {skill.badge}
+                                                    </span>
+                                                )}
+                                            </div>
+
+                                            {/* Skill Name */}
+                                            <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight line-clamp-1">
+                                                {skill.name}
+                                            </span>
+                                        </div>
                                     ))}
                                 </div>
+
                             </div>
                         </Reveal>
                     ))}
@@ -1065,29 +1151,6 @@ function Projects() {
     );
 }
 
-/* ══════════════════════════════════════════════════════════════════════
-   WHAT I BUILD SECTION
-══════════════════════════════════════════════════════════════════════ */
-function WhatIBuild() {
-    return (
-        <section id="what-i-build" className="py-20 section-divider">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <Reveal><SectionHeading label="Specialisation" title="What I Build" /></Reveal>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {WHAT_I_BUILD.map((item, i) => (
-                        <Reveal key={i} delay={i * 60}>
-                            <div className="cap-card group rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/50 p-7 shadow-sm hover:border-blue-500/40 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-blue-500/8 transition-all duration-300">
-                                <div className="cap-icon text-3xl mb-4 w-12 h-12 flex items-center justify-center">{item.icon}</div>
-                                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{item.title}</h3>
-                                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{item.description}</p>
-                            </div>
-                        </Reveal>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-}
 
 /* ══════════════════════════════════════════════════════════════════════
    DEVELOPMENT APPROACH SECTION (Sequential Steps + Progress Flow)
@@ -1401,10 +1464,8 @@ function App() {
             <main>
                 <Hero theme={theme} />
                 <About />
-                <Capabilities />
                 <Skills />
                 <Projects />
-                <WhatIBuild />
                 <DevApproach />
                 <Contact />
             </main>
