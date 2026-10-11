@@ -259,6 +259,13 @@
 </head>
 
 <body>
+<!-- Hidden form for Netlify build-time form bot detection -->
+<form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <textarea name="message"></textarea>
+</form>
+
 <div id="root"></div>
 
 <script type="text/babel">
@@ -1212,6 +1219,12 @@ function Contact() {
         if (errors[name]) setErrors(er => ({ ...er, [name]: '' }));
     };
 
+    const encode = (data) => {
+        return Object.keys(data)
+            .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+            .join('&');
+    };
+
     const handleSubmit = async e => {
         e.preventDefault();
         const errs = validate();
@@ -1219,24 +1232,42 @@ function Contact() {
 
         setStatus('loading');
         setErrors({});
+
         try {
-            const res  = await fetch('/api/contact', {
-                method : 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body   : JSON.stringify(form),
+            // Netlify Form submission (POST / with urlencoded payload)
+            const res = await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: encode({
+                    'form-name': 'contact',
+                    ...form
+                })
             });
-            const data = await res.json();
-            if (data.success) {
+
+            if (res.ok) {
                 setStatus('success');
-                setStatusMsg(data.message || "Message sent! I'll get back to you soon.");
+                setStatusMsg("Message sent successfully! I'll get back to you soon. 🎉");
                 setForm({ name: '', email: '', message: '' });
             } else {
-                setStatus('error');
-                setStatusMsg(data.message || 'Something went wrong. Please try again.');
+                // If not running on Netlify (e.g. local Node server), fallback to local backend API
+                const localRes = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(form)
+                });
+                const localData = await localRes.json();
+                if (localData.success) {
+                    setStatus('success');
+                    setStatusMsg(localData.message || "Message sent! I'll get back to you soon.");
+                    setForm({ name: '', email: '', message: '' });
+                } else {
+                    setStatus('error');
+                    setStatusMsg(localData.message || 'Something went wrong. Please try again.');
+                }
             }
         } catch {
             setStatus('error');
-            setStatusMsg(`Network error. Make sure the server is running, or email me at ikramulhaqq90@gmail.com.`);
+            setStatusMsg(`Network error. Please email me directly at ikramulhaqq90@gmail.com.`);
         }
     };
 
@@ -1256,7 +1287,19 @@ function Contact() {
                     {/* Form */}
                     <Reveal delay={100} className="lg:col-span-3">
                         <div className="rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/60 p-7 sm:p-9 shadow-xl backdrop-blur-sm">
-                            <form onSubmit={handleSubmit} noValidate className="space-y-5">
+                            <form 
+                                name="contact" 
+                                method="POST" 
+                                data-netlify="true" 
+                                data-netlify-honeypot="bot-field"
+                                onSubmit={handleSubmit} 
+                                noValidate 
+                                className="space-y-5"
+                            >
+                                <input type="hidden" name="form-name" value="contact" />
+                                <div hidden>
+                                    <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+                                </div>
 
                                 {/* Name */}
                                 <div>
