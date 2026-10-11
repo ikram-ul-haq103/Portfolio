@@ -1234,40 +1234,59 @@ function Contact() {
         setErrors({});
 
         try {
-            // Netlify Form submission (POST / with urlencoded payload)
-            const res = await fetch('/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: encode({
-                    'form-name': 'contact',
-                    ...form
-                })
-            });
+            // Priority 1: Web3Forms submission (Direct email to ikramulhaqq90@gmail.com with zero configuration)
+            const web3Payload = {
+                access_key: 'c7c8c874-dc7d-4da4-9a4f-508b53ca36da', // Public Web3Forms submission key for Ikram Ul Haq
+                subject: `New Portfolio Message from ${form.name.trim()}`,
+                from_name: form.name.trim(),
+                name: form.name.trim(),
+                email: form.email.trim(),
+                message: form.message.trim(),
+                replyto: form.email.trim(),
+            };
 
-            if (res.ok) {
+            let sentSuccessfully = false;
+
+            try {
+                const w3Res = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(web3Payload)
+                });
+                const w3Data = await w3Res.json();
+                if (w3Data.success) {
+                    sentSuccessfully = true;
+                }
+            } catch (w3Err) {
+                // If blocked by adblocker, fallback to Netlify Forms below
+            }
+
+            // Priority 2: Also submit to Netlify Forms if available
+            if (!sentSuccessfully) {
+                const netlifyRes = await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: encode({
+                        'form-name': 'contact',
+                        ...form
+                    })
+                });
+                if (netlifyRes.ok) {
+                    sentSuccessfully = true;
+                }
+            }
+
+            if (sentSuccessfully) {
                 setStatus('success');
                 setStatusMsg("Message sent successfully! I'll get back to you soon. 🎉");
                 setForm({ name: '', email: '', message: '' });
             } else {
-                // If not running on Netlify (e.g. local Node server), fallback to local backend API
-                const localRes = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(form)
-                });
-                const localData = await localRes.json();
-                if (localData.success) {
-                    setStatus('success');
-                    setStatusMsg(localData.message || "Message sent! I'll get back to you soon.");
-                    setForm({ name: '', email: '', message: '' });
-                } else {
-                    setStatus('error');
-                    setStatusMsg(localData.message || 'Something went wrong. Please try again.');
-                }
+                setStatus('error');
+                setStatusMsg("Could not send message. Please email me directly at ikramulhaqq90@gmail.com.");
             }
-        } catch {
+        } catch (err) {
             setStatus('error');
-            setStatusMsg(`Network error. Please email me directly at ikramulhaqq90@gmail.com.`);
+            setStatusMsg("Network error. Please email me directly at ikramulhaqq90@gmail.com.");
         }
     };
 
